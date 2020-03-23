@@ -1,5 +1,6 @@
 package com.mesaj.app.steps.signup;
 
+import com.mesaj.app.pageobjects.signup.SignUpPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -7,7 +8,12 @@ import cucumber.api.java.en.When;
 public class SignUpStepDefs {
 
     @Given("^Pepito wants to have an account$")
-    public void pepito_wants_to_have_an_account() {
+    public void pepito_wants_to_have_an_account() throws InterruptedException {
+        SignUpPage signUpPage = new SignUpPage();
+        signUpPage.go();
+        signUpPage.writeFirstName("pepito");
+        signUpPage.writeLastName("perez");
+        Thread.sleep(6000);
 
     }
 
