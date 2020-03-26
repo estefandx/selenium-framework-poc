@@ -1,6 +1,6 @@
 package com.mesaj.app.steps.signup;
 
-import com.mesaj.app.SpringConfig;
+import com.mesaj.app.DriverConfig;
 import com.mesaj.app.pageobjects.signup.SignUpPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -8,7 +8,7 @@ import cucumber.api.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = SpringConfig.class)
+@ContextConfiguration(classes = DriverConfig.class)
 public class SignUpStepDefs {
 
     @Autowired

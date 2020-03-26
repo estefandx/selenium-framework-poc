@@ -1,20 +1,14 @@
 package com.mesaj.app;
 
-
-import com.mesaj.app.util.webdriver.DriverUtil;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 public class DriverHook {
 
-    public static WebDriver driver;
+    //without spring
+   /* public static WebDriver driver;
 
     @Before
     public static void createDriver() {
-        System.setProperty("webdriver.chrome.driver", DriverUtil
-                .getPathDriverByOS());
+        System.setProperty("webdriver.chrome.driver", GetCompleteDriverPath
+                .byOS());
         driver = new ChromeDriver();
     }
 
@@ -23,5 +17,5 @@ public class DriverHook {
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }
