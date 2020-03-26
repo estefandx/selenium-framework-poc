@@ -19,7 +19,7 @@ public class SignUpStepDefs {
         signUpPage.go();
         signUpPage.writeFirstName("pepito");
         signUpPage.writeLastName("perez");
-        Thread.sleep(6000);
+        Thread.sleep(3000);
     }
 
     @When("^he sends required information to get the account$")

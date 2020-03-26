@@ -1,10 +1,7 @@
 package com.mesaj.app.util.webdriver;
 
-import org.openqa.selenium.WebDriver;
-
 public class DriverUtil {
 
-    private WebDriver driver;
     private static String OS = System.getProperty("os.name").toLowerCase();
     private static String driverPath = "/src/test/resources/webdriver/%s/%s";
 
