@@ -1,7 +1,9 @@
 package com.mesaj.app.pageobjects.signup;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,45 +11,69 @@ import org.springframework.stereotype.Component;
 @Component
 public class SignUpPage {
 
+    private WebDriver webDriver;
+
+    @FindBy(xpath = "//input[@ng-model='FirstName']")
+    private WebElement firstName;
+
+    @FindBy(xpath = "//input[@ng-model='LastName']")
+    private WebElement lastName;
+
+    @FindBy(xpath = "//input[@type='email']")
+    private WebElement emailAddress;
+
+    @FindBy(xpath = "//input[@type='tel']")
+    private WebElement phoneBy;
+
+    @FindBy(xpath = "//input[@value='Male']")
+    private WebElement genderMaleBy;
+
+    @FindBy(xpath = "//input[@value='FeMale']")
+    private WebElement genderFemaleBy;
+
+    @FindBy(id = "countries")
+    private WebElement countryBy;
+
+    @FindBy(id = "yearbox")
+    private WebElement dateOfBirthYearBy;
+
+    @FindBy(xpath = "//select[@ng-model='monthbox']")
+    private WebElement dateOfBirthMonthBy;
+
+    @FindBy(id = "daybox")
+    private WebElement dateOfBirthDayBy;
+
+    @FindBy(id = "firstpassword")
+    private WebElement passwordBy;
+
+    @FindBy(id = "secondpassword")
+    private WebElement confirmPassword;
+
+    @FindBy(id = "submitbtn")
+    private WebElement submit;
+
     @Autowired
-    protected WebDriver webDriver;
-
-    private By firstNameBy = By.xpath("//input[@ng-model='FirstName']");
-    private By lastNameBy = By.xpath("//input[@ng-model='LastName']");
-    private By emailAddressBy = By.xpath("//input[@type='email']");
-    private By phoneBy = By.xpath("//input[@type='tel']");
-    private By genderMaleBy = By.xpath("//input[@value='Male']");
-    private By genderFemaleBy = By.xpath("//input[@value='FeMale']");
-    private By countryBy = By.id("countries");
-    private By dateOfBirthYearBy = By.id("yearbox");
-    private By dateOfBirthMonthBy = By.xpath("//select[@ng-model='monthbox']");
-    private By dateOfBirthDayBy = By.id("daybox");
-    private By passwordBy = By.id("firstpassword");
-    private By confirmPasswordBy = By.id("secondpassword");
-    private By submitBy = By.id("submitbtn");
-
-
-    //todo introduce page factory / use the decorators
+    public SignUpPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
+        PageFactory.initElements(webDriver, this);
+    }
 
     public void go() {
         webDriver.get("http://demo.automationtesting.in/Register.html");
     }
 
     public void writeFirstName(String firstName) {
-        webDriver
-                .findElement(firstNameBy)
+        this.firstName
                 .sendKeys(firstName);
     }
 
     public void writeLastName(String lastName) {
-        webDriver
-                .findElement(lastNameBy)
+        this.lastName
                 .sendKeys(lastName);
     }
 
     public void writeEmailAddress(String emailAddress) {
-        webDriver
-                .findElement(emailAddressBy)
+        this.emailAddress
                 .sendKeys(emailAddress);
     }
 
@@ -60,61 +86,55 @@ public class SignUpPage {
     }
 
     public void selectCountry(String country) {
-        new Select(webDriver.findElement(countryBy))
+        new Select(this.countryBy)
                 .selectByValue(country);
     }
 
 
     public void selectYearOfBirth(String year) {
-        new Select(webDriver.findElement(dateOfBirthYearBy))
+        new Select(this.dateOfBirthYearBy)
                 .selectByValue(year);
     }
 
     public void selectMonthOfBirth(String month) {
-        new Select(webDriver.findElement(dateOfBirthMonthBy))
+        new Select(this.dateOfBirthMonthBy)
                 .selectByValue(month);
     }
 
     public void selectDayOfBirth(String day) {
-        new Select(webDriver.findElement(dateOfBirthDayBy))
+        new Select(this.dateOfBirthDayBy)
                 .selectByValue(day);
     }
 
     public void writePassword(String password) {
-        webDriver
-                .findElement(passwordBy)
+        this.passwordBy
                 .sendKeys(password);
     }
 
     public void writePasswordConfirmation(String password) {
-        webDriver
-                .findElement(confirmPasswordBy)
+        this.confirmPassword
                 .sendKeys(password);
     }
 
     public void writePhoneNumber(String phoneNumber) {
-        webDriver
-                .findElement(phoneBy)
+        phoneBy
                 .sendKeys(phoneNumber);
     }
 
     public void clickOnSubmit() {
-        webDriver.findElement(submitBy).click();
+        submit.click();
     }
 
     private void selectFemaleGender() {
-        webDriver.findElement(genderFemaleBy).click();
+        this.genderFemaleBy.click();
     }
 
     private void selectMaleGender() {
-        webDriver.findElement(genderMaleBy).click();
+        this.genderMaleBy.click();
     }
 
     public enum Gender {
         female,
         male
     }
-
 }
-
-
