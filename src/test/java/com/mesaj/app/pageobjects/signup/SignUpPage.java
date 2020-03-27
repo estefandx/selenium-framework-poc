@@ -23,28 +23,28 @@ public class SignUpPage {
     private WebElement emailAddress;
 
     @FindBy(xpath = "//input[@type='tel']")
-    private WebElement phoneBy;
+    private WebElement phone;
 
     @FindBy(xpath = "//input[@value='Male']")
-    private WebElement genderMaleBy;
+    private WebElement genderMale;
 
     @FindBy(xpath = "//input[@value='FeMale']")
-    private WebElement genderFemaleBy;
+    private WebElement genderFemale;
 
     @FindBy(id = "countries")
-    private WebElement countryBy;
+    private WebElement country;
 
     @FindBy(id = "yearbox")
-    private WebElement dateOfBirthYearBy;
+    private WebElement dateOfBirthYear;
 
     @FindBy(xpath = "//select[@ng-model='monthbox']")
-    private WebElement dateOfBirthMonthBy;
+    private WebElement dateOfBirthMonth;
 
     @FindBy(id = "daybox")
-    private WebElement dateOfBirthDayBy;
+    private WebElement dateOfBirth;
 
     @FindBy(id = "firstpassword")
-    private WebElement passwordBy;
+    private WebElement password;
 
     @FindBy(id = "secondpassword")
     private WebElement confirmPassword;
@@ -86,28 +86,28 @@ public class SignUpPage {
     }
 
     public void selectCountry(String country) {
-        new Select(this.countryBy)
+        new Select(this.country)
                 .selectByValue(country);
     }
 
 
     public void selectYearOfBirth(String year) {
-        new Select(this.dateOfBirthYearBy)
+        new Select(this.dateOfBirthYear)
                 .selectByValue(year);
     }
 
     public void selectMonthOfBirth(String month) {
-        new Select(this.dateOfBirthMonthBy)
+        new Select(this.dateOfBirthMonth)
                 .selectByValue(month);
     }
 
     public void selectDayOfBirth(String day) {
-        new Select(this.dateOfBirthDayBy)
+        new Select(this.dateOfBirth)
                 .selectByValue(day);
     }
 
     public void writePassword(String password) {
-        this.passwordBy
+        this.password
                 .sendKeys(password);
     }
 
@@ -117,7 +117,7 @@ public class SignUpPage {
     }
 
     public void writePhoneNumber(String phoneNumber) {
-        phoneBy
+        this.phone
                 .sendKeys(phoneNumber);
     }
 
@@ -126,11 +126,11 @@ public class SignUpPage {
     }
 
     private void selectFemaleGender() {
-        this.genderFemaleBy.click();
+        this.genderFemale.click();
     }
 
     private void selectMaleGender() {
-        this.genderMaleBy.click();
+        this.genderMale.click();
     }
 
     public enum Gender {

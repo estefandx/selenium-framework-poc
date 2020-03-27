@@ -11,7 +11,6 @@ public class DriverFactory {
 
         if (browser == Browser.chrome) {
             System.setProperty("webdriver.chrome.driver", GetCompleteDriverPath.byBrowser(browser));
-
             return new ChromeDriver();
         }
 

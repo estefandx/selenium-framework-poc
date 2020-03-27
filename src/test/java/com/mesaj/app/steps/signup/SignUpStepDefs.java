@@ -21,7 +21,7 @@ public class SignUpStepDefs {
     HomePage homePage;
 
     @Given("^Pepito wants to have an account$")
-    public void pepito_wants_to_have_an_account() throws InterruptedException {
+    public void pepito_wants_to_have_an_account() {
 
         String randomNumber = RandomNumberGenerator.get();
 
@@ -39,7 +39,6 @@ public class SignUpStepDefs {
         signUpPage.writePasswordConfirmation("Passw0rdXX.._");
         signUpPage.clickOnSubmit();
 
-        Thread.sleep(7000);
     }
 
     @When("^he sends required information to get the account$")
