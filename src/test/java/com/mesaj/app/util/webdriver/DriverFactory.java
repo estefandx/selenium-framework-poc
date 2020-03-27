@@ -22,5 +22,4 @@ public class DriverFactory {
 
         throw new IllegalArgumentException("Driver not found for browser: " + browser);
     }
-
 }

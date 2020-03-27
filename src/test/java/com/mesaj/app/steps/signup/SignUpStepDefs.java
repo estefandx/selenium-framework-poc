@@ -1,25 +1,45 @@
 package com.mesaj.app.steps.signup;
 
-import com.mesaj.app.DriverConfig;
+import com.mesaj.app.conf.DriverConfig;
+import com.mesaj.app.pageobjects.home.HomePage;
 import com.mesaj.app.pageobjects.signup.SignUpPage;
+import com.mesaj.app.util.RandomNumberGenerator;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = DriverConfig.class)
+//@ContextConfiguration(classes = DriverConfig.class)
+@ContextConfiguration(classes = {DriverConfig.class})
 public class SignUpStepDefs {
 
     @Autowired
     SignUpPage signUpPage;
 
+    @Autowired
+    HomePage homePage;
+
     @Given("^Pepito wants to have an account$")
     public void pepito_wants_to_have_an_account() throws InterruptedException {
+
+        String randomNumber = RandomNumberGenerator.get();
+
         signUpPage.go();
         signUpPage.writeFirstName("pepito");
         signUpPage.writeLastName("perez");
-        Thread.sleep(3000);
+        signUpPage.writeEmailAddress(String.format("%s%s%s", "perez@", randomNumber, ".com"));
+        signUpPage.writePhoneNumber(RandomNumberGenerator.get());
+        signUpPage.selectGender(SignUpPage.Gender.male);
+        signUpPage.selectCountry("Colombia");
+        signUpPage.selectYearOfBirth("1917");
+        signUpPage.selectMonthOfBirth("January");
+        signUpPage.selectDayOfBirth("1");
+        signUpPage.writePassword("Passw0rdXX.._");
+        signUpPage.writePasswordConfirmation("Passw0rdXX.._");
+        signUpPage.clickOnSubmit();
+
+        Thread.sleep(7000);
     }
 
     @When("^he sends required information to get the account$")
@@ -29,6 +49,6 @@ public class SignUpStepDefs {
 
     @Then("^he should be told that the account was created$")
     public void he_should_be_told_that_the_account_was_created() {
-
+        homePage.paginationShouldBeVisible();
     }
 }
