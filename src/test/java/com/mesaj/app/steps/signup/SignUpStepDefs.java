@@ -1,8 +1,9 @@
 package com.mesaj.app.steps.signup;
 
 import com.mesaj.app.conf.DriverConfig;
+import com.mesaj.app.enums.Gender;
 import com.mesaj.app.pageobjects.home.HomePage;
-import com.mesaj.app.pageobjects.signup.SignUpPage;
+import com.mesaj.app.pageobjects.signup.SignUpServices;
 import com.mesaj.app.util.RandomNumberGenerator;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,7 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 public class SignUpStepDefs {
 
     @Autowired
-    SignUpPage signUpPage;
+    SignUpServices signUpServices;
 
     @Autowired
     HomePage homePage;
@@ -25,19 +26,19 @@ public class SignUpStepDefs {
 
         String randomNumber = RandomNumberGenerator.get();
 
-        signUpPage.go();
-        signUpPage.writeFirstName("pepito");
-        signUpPage.writeLastName("perez");
-        signUpPage.writeEmailAddress(String.format("%s%s%s", "perez@", randomNumber, ".com"));
-        signUpPage.writePhoneNumber(RandomNumberGenerator.get());
-        signUpPage.selectGender(SignUpPage.Gender.male);
-        signUpPage.selectCountry("Colombia");
-        signUpPage.selectYearOfBirth("1917");
-        signUpPage.selectMonthOfBirth("January");
-        signUpPage.selectDayOfBirth("1");
-        signUpPage.writePassword("Passw0rdXX.._");
-        signUpPage.writePasswordConfirmation("Passw0rdXX.._");
-        signUpPage.clickOnSubmit();
+        signUpServices.go();
+        signUpServices.writeFirstName("pepito");
+        signUpServices.writeLastName("perez");
+        signUpServices.writeEmailAddress(String.format("%s%s%s", "perez@", randomNumber, ".com"));
+        signUpServices.writePhoneNumber(RandomNumberGenerator.get());
+        signUpServices.selectGender(Gender.male);
+        signUpServices.selectCountry("Colombia");
+        signUpServices.selectYearOfBirth("1917");
+        signUpServices.selectMonthOfBirth("January");
+        signUpServices.selectDayOfBirth("1");
+        signUpServices.writePassword("Passw0rdXX.._");
+        signUpServices.writePasswordConfirmation("Passw0rdXX.._");
+        signUpServices.clickOnSubmit();
 
     }
 
