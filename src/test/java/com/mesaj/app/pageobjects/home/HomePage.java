@@ -21,7 +21,7 @@ public class HomePage extends PageBase {
     }
 
     public void paginationShouldBeVisible() {
-        webDriverWait
-                .until(ExpectedConditions.visibilityOf(webDriver.findElement(tablePaginationBy)));
+
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(tablePaginationBy));
     }
 }
